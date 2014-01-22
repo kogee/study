@@ -1,0 +1,36 @@
+<html>
+<head id="header">
+	<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=yes" />
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+	<script>
+        $(function(){
+            $('#button').click(function(){
+            	//divタグの表示・非表示切り替え
+            	$('#name').toggle();
+
+            	//テーブルの奇数行の表示・非表示をスライドしながら切り捨て
+            	$("table tr:nth-child(odd)").slideToggle();
+
+            	//divタグのwidth,heightを2000ミリ秒かけて
+            	//指定サイズに拡大アニメーション
+            	$("#box").animate({
+            		width: "200px",
+            		height: "200px"
+            	},2000);
+
+            });
+        });
+	</script>
+</head>
+<body>
+	<input type="button" id="button" value="Click!" />
+	<div id="name">Hello</div>
+	<div id="box" style="width:50px;height:50px;background:red;">Box</div>
+	<table border="1">
+		<tr><td>1</td></tr>
+		<tr><td>2</td></tr>
+		<tr><td>3</td></tr>
+		<tr><td>4</td></tr>
+	</table>
+</body>
+</html>

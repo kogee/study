@@ -1,0 +1,40 @@
+<html>
+<head id="header">
+	<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=yes" />
+	<title>郵便番号読み込み</title>
+	<script><!--
+	function $(id) {return document.getElementById(id);}
+
+	//動的なJSONP呼び出し
+	function search(){
+		var script = document.createElement('script');
+		//入力内容からJSONPの検索を行うURLを作成
+		script.src="http://zip.ricollab.jp/" + $('zipcode').value + 
+		".json?callback=processJson";
+		//<script>タグを<head>タグ以下に追加
+		$('header').appendChild(script);
+	}
+
+	//JSONPから自動的に呼び出される関数
+	function processJson(json){
+		$('result').innerHTML = "";
+		if(json.result != null){
+            //resultプロパティがある
+            for(var i = 0 ; i < json.result.length ; i++) {
+            	//各件ごと取得してaddressプロパティを表示
+            	$('result').innerHTML += json.result[i].address + "<hr />";
+            }
+		}else{
+			$('result').innerHTML = json.address.prefecture + json.address.city + json.address.town;
+		}
+	}
+	// -->
+	</script>
+</head>
+<body>
+	<h1>JSONPによる郵便番号検索</h1>
+	<div id="result"></div>
+	<input type="text" id="zipcode"/>
+	<button onclick="search()";>検索</button>
+</body>
+</html>

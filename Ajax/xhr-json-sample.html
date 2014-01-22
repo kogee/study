@@ -1,0 +1,40 @@
+<html>
+<head id="header">
+	<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=yes" />
+	<title>AjaxXML読み込みサンプル</title>
+	<script><!--
+	function $(id) {return document.getElementById(id);}
+
+	//Ajax呼び出し
+	function requestAjax() {
+		//XMLHttpRequestオブジェクトの作成
+		var req = new XMLHttpRequest();
+		//openメソッドでURLを指定
+		req.open('GET','message.json');
+		//onreadstatechangeイベントのハンドラを設定
+		req.onreadystatechange = function() {
+			//受信完了時には
+			if (req.readyState == 4) {
+				var json = JSON.parse(req.responseText);
+				//messagesの配列内をループ
+				for(var i = 0 ; i < json.messages.length ; i++) {
+					var message = json.messages[i];
+					//dateとtextの内容を表示
+					$('output').innerHTML += message.date + " : " + message.text + "<br/>";
+				}
+			}
+		}
+
+		//リクエストを送信
+		req.send(null);
+	}
+
+	//-->
+	</script>
+</head>
+<body>
+	<h1>AjaxJSONサンプル</h1>
+	<div id="output"></div>
+	<button onclick="requestAjax();">Ajax実行</button>
+</body>
+</html>

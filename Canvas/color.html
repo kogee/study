@@ -1,0 +1,19 @@
+<!DOCTYPE html><meta charset="utf-8">
+<meta name="viewpoint" contents="width=320">
+<canvas id="a_canvas" width="300" height="300"></canvas>
+<script type="text/javascript">
+    var canvas = document.getElementById("a_canvas");
+    var ctx = canvas.getContext("2d");
+    //18X18の正方形を書く
+    for(var i = 0; i < 324; i++){
+    	//計算で色を決定する
+    	var x = (i % 18), y = Math.floor(i / 18);
+    	var r = Math.floor(x * 14);
+    	var g = Math.floor(y * 14);
+    	var b = (i % 2) * 255;
+    	ctx.fillStyle = "rgb(" + r + "," + g + "," + b + ")";//色指定
+    	//描画
+    	ctx.fillRect(x*16, y*16, 14, 14); 
+    }
+</script>
+

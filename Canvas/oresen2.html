@@ -1,0 +1,39 @@
+<!DOCTYPE html><meta charset="utf-8">
+<meta name="viewpoint" contents="width=320">
+<canvas id="graph" width="300" height="300"></canvas>
+<script type="text/javascript">
+    //以下の数学テストの点数の推移を線グラフとして描画
+    var datas = [80,44,32,77,82,91,80,62,55,88];
+    //コンテキストの取得と座標の計算
+    var canvas = document.getElementById("graph");
+    var ctx = canvas.getContext("2d");
+    var width = 300, height = 300;
+    var data_w = width / datas.length, value_h = height / 100;
+    //背景の補助線を描画
+    ctx.lineWidth = 1;
+    ctx.strokeStyle = "#e0e0e0";
+    for (var y = 0; y < 11; y++) { 
+        var yy = y * value_h * 10;
+        drawLine(ctx, 0, yy, width, yy);
+    }
+    for (var x = 0; x < (datas.length+1); x++) {
+        drawLine(ctx, (x * data_w), 0, (x * data_w), height);
+    }
+    //テストの点を描画する
+    ctx.beginPath();
+    ctx.strokeStyle = "black";
+    ctx.lineWidth = 4;
+    for (var i = 0; i < datas.length; i++) {
+        var value = datas[i];
+        var y = height - height * (value / 100);
+        var x = i * (width / (datas.length-1));
+        if (i == 0) ctx.moveTo(x,y); else ctx.lineTo(x,y);
+    }
+    ctx.stroke();
+    //線を書く関数
+    function drawLine(ctx, x1, y1, x2, y2) {
+        ctx.beginPath();
+        ctx.moveTo(x1, y1); ctx.lineTo(x2, y2);
+        ctx.stroke();
+    }
+</script>

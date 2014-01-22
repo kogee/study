@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<script type="text/javascript">
+window.onload = function () {
+	//Geolocation APIが使えるかチェック
+	var geo = navigator.geolocation;
+	if (!geo) {
+		alert("サポートしていません");
+		return;
+	}
+
+	geo.getCurrentPosition(
+	    geo_onSuccess,
+	    geo_onError);
+    };
+	function geo_onSuccess(pos) {
+		var lat = pos.coords.latitude;
+		var lng = pos.coords.longitude;
+		alert("現在位置:" + lat + "," + lng);
+	}
+
+		//位置情報の取得に失敗した時
+	function geo_onError(error) {
+		alert("ERROR:" + error.message)
+	}
+</script>
+</html>
+

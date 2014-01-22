@@ -1,0 +1,69 @@
+<html>
+<head id="header">
+	<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=yes" />
+　　 <title>SELECTテスト</title>
+    <script>
+    <!--
+        function $(id) {
+        	return document.getElementById(id);
+        }
+        var categories = [
+        	//最初は空データ
+        	{name : "", subCategories : []},
+        	//ケーキの大分類とそれ以下の小分類
+        	{name : "ケーキ" , subCategories : ["ショートケーキ","ガトーショコラ"]},
+        	//フルーツの大分類とそれ以下の小分類
+        	{name : "フルーツ", subCategories : ["リンゴ","みかん","メロン"]}
+
+        ];
+
+        function init() {
+        	//categories変数から第分類を取り出してオプションを作成する
+        	//text因数には分類名を、value引数にはインデックスを指定
+
+        	for(var i = 0 ; i < categories.length ; i++) {
+        		$('mainCategory').options[i] = new Option(categories[i].name, i);
+        	}
+        }
+        
+        //DOM操作で<select>タグ以下のオプションをすべて削除する
+        function removeChildren(x) {
+        	if (x.hasChildNodes()) {
+        		x.removeChild(x.firstChild)
+        	}
+        }
+
+        function selectChange() {
+        	//選択された大分類を出力
+        	$('output').innerHTML =
+        	    $('mainCategory').options[$('mainCategory').selectedIndex].text + "が選択されました。サブカテゴリを更新します";
+
+        	//subCategoryのオプションをすべて削除
+        	removeChildren($('subCategory'));
+
+        	//categories変数から選択された大分類以下の小分類を取得
+        	var subCategories =
+        	    categories[$('mainCategory').selectedIndex].subCategories;
+
+        	//小分類に応じてオプションを作成
+            for(var i = 0 ; i < subCategories.length ; i++) {
+            	$('subCategory').options[i] = new Option(subCategories[i], i);
+            }
+
+        }
+        //-->
+    </script>
+</head>
+<body onload="init();">
+<h1>SELECTテスト</h1>
+<div id="output"></div>
+<!--　大分類<select>タグ: 選択状態が変更されたらselectChange関数を呼び出す -->
+<select id="mainCategory" onChange="selectChange();">
+    <option></option>
+</select>
+<!--小分類<select>タグ -->
+<select id="subCategory">
+</select>
+</body>
+</html> 
+

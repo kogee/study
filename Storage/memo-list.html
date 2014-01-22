@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+	<meta charset="UTF-8">
+	<title>HTML5</title>
+</head>
+<body onload="showAllMemo();">
+	<h1>一言MEMOアプリ</h1>
+	<div id="memo-list"></div>
+	<p><a href="memo-create.html">一言MEMOする</a></p>
+	<p><a href='javascript:void(0)' onclick='clearMemo();'>一言MEMOをすべてクリアする</a></p>
+		<script>
+		<!--
+		function $(id) { return document.getElementById(id); }
+
+		function showAllMemo() {
+			//表示用のタグの中身をクリア
+			for (var i = $("memo-list").childNodes.length-1; i>=0; i--) {
+				$("memo-list").removeChild($("memo-list").childNodes[i]);
+			}
+
+			//localStorageからデータを取得し、JSON.parseで配列に戻す
+			var memoData = JSON.parse(localStorage.memo);
+			//nullならば何もしない
+			if(memoData == null)
+				return;
+
+			//配列を順に処理
+			for(var i = 0 ; i < memoData.length ; i++) {
+				var memoDiv = document.createElement('div');
+
+				//dateプロパティからメモした日時を、memoプロパティからテキストを取得
+				memoDiv.innerHTML = memoData[i].date + ":" + memoData[i].memo;
+				$("memo-list").appendChild(memoDiv);
+				$("memo-list").appendChild(document.createElement('hr'));
+			}
+		}
+
+		function clearMemo() {
+			//localStorageのmemoキーと値を削除
+			localStorage.removeItem("memo");
+			alert("ひとことメモを全てクリアしました");
+			showAllMemo();
+		}
+		// -->
+		</script>
+	</body>
+	</html>

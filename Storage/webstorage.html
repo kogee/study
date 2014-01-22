@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<script type="text/javascript">
+	function $(id) { return document.getElementById(id); }
+
+	//ストレージの内容を画面に表示
+	function load() {
+		//ローカルストレージ/セッションストレージから読み込み
+		if(localStorage["message"] != null) {
+			$("localStorageOutput").innerHTML = localStorage["message"];
+		}
+		if(sessionStorage["message"] != null) {
+			$("sessionStorageOutput").innerHTML = sessionStorage["message"];
+		}
+	}
+
+	//入力内容をストレージに保存
+	function save() {
+		var value = $("text").value;
+		//localStorage/sessionStorageに同じ値を設定
+		localStorage["message"]   = value;
+		sessionStorage["message"] = value;
+
+		//保存後,load関数で画面に表示
+		load();
+	}
+	</script>
+</head>
+<body onload="load()">
+		<h1>localStorage/sessionStorageサンプル</h1>
+		localStorageの内容<div id="localStorageOutput"></div>
+		sessionStorageの内容<div id="sessionStorageOutput"></div>
+		<input type="text" id="text"><br>
+		<button onclick="save()">Web Storageに保存</button><br>
+		<a href="webstorage02.html">次の画面へ</a>
+		<a href="webstorage02.html" target="_blank">
+			新しいウィンドウで次の画面</a>
+</body>
+</html>

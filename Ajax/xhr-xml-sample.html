@@ -1,0 +1,47 @@
+<html>
+<head id="header">
+	<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=yes" />
+	<title>AjaxXML読み込みサンプル</title>
+	<script><!--
+	function $(id) {return document.getElementById(id);}
+
+	//Ajax呼び出し
+	function requestAjax() {
+		//XMLHttpRequestオブジェクトの作成
+		var req = new XMLHttpRequest();
+		//openメソッドでURLを指定
+		req.open('GET','message.xml');
+		//onreadstatechangeイベントのハンドラを設定
+		req.onreadystatechange = function() {
+			//受信完了時には
+			if (req.readyState == 4) {
+				//取得した文字列を出力
+				var xml = req.responseXML;
+				//getElementsByTagNameメソッドで<message>タグを取得
+				var messages = xml.getElementsByTagName("message");
+				for(var i = 0 ; i < messages.length ; i++) {
+					var message = messages.item(i);
+
+					console.log(message);
+					//<date>タグと<text>タグの内容を表示
+					//<data>タグは<message>タグのfirstChild <text>タグはlastChild
+					$('output').innerHTML += message.firstChild.firstChild.nodeValue
+					    + " : " + message.lastChild.firstChild.nodeValue + "<br />";
+				}
+
+			}
+		}
+
+		//リクエストを送信
+		req.send(null);
+	}
+
+	//-->
+	</script>
+</head>
+<body>
+	<h1>AjaxXMLサンプル</h1>
+	<div id="output"></div>
+	<button onclick="requestAjax();">Ajax実行</button>
+</body>
+</html>

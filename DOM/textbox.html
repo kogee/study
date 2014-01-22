@@ -1,0 +1,40 @@
+<html>
+<head id="header">
+	<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=yes" />
+	<title>テキストボックスの入出力</title>
+	<script><!--
+	function $(id) {
+		return document.getElementById(id);
+	}
+
+	function check() {
+		if($('displayCheck').checked) {
+			$('textbox').style.visibility = 'visible';
+
+		} else {
+			$('textbox').style.visibility = 'hidden';
+		}
+	}
+
+	function textChange() {
+		var name = $('name').value;
+		var message = "こんにちは:" + name + "さん";
+		$('output').value = message;
+	}
+
+
+    // -->
+	</script>
+</head>
+<body>
+<h1>テキストボックスの入出力</h1>
+お名前を入力してください:
+<input type="text" id="name" onChange="textChange();" />
+<br />
+メッセージ:<input type="text" id="output" />
+<br />
+<input type="checkbox" id="displayCheck" onclick="check();" />
+    表示/非表示切り替え <br />
+<input type="text" id="textbox" style="visiblity:hidden" />
+</body>
+</html>

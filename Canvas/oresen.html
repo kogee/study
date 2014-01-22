@@ -1,0 +1,18 @@
+<!DOCTYPE html><meta charset="utf-8">
+<meta name="viewpoint" contents="width=320">
+<canvas id="a_canvas" width="300" height="300"></canvas>
+<script type="text/javascript">
+    var canvas = document.getElementById("a_canvas");
+    var ctx = canvas.getContext("2d");
+    ctx.beginPath();
+    ctx.moveTo(10,290);
+    ctx.lineTo(70,30);
+    ctx.lineTo(130,180);
+    ctx.lineTo(190,30);
+    ctx.lineTo(250,290);
+    ctx.lineWidth = 12;
+    ctx.strokeStyle = "black";
+    ctx.stroke();
+    ctx.fillStyle = "yellow";
+    ctx.fill();
+ </script>

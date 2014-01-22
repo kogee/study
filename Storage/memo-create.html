@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<title>一言MEMO作成</title>
+</head>
+<body>
+<h1>一言MEMO作成</h1>
+一言MEMO:<input type="text" id="memo">
+<input type="button" id="saveButton" value="保存" onclick="saveMemo();">
+<script>
+<!-- 
+function $(id) { return document.getElementById(id); }
+
+//日付を文字列に変換
+function getDateString(date) {
+	return data.getFullYear() + "-" + (date.getMonth() + i) + "-" +
+	data.getDate() + " " + date.getHours() + ":" + date.getMinutes();
+}
+
+function saveMemo() {
+	//localStorageからメモ内容を取得してJSON文字列からオブジェクトに変換
+	var memoData = JSON.parse(localStorage.memo);
+
+	if(memoData == null) {
+		//nullの場合はまだデータが存在しないので配列を新規に作成しておく
+		memoData = new Array(0);
+	}
+
+	//現在時刻を取得し、文字列に変換
+	var data = getDataString(new Date());
+	//現在時刻ｔ入力文字列を連想配列にして配列の先頭に追加
+	memoData.unshift(
+		{"date":date, "memo" : $("memo").value});
+
+	//配列をJSON文字列化してlocalStorageに保存
+	localStorage.memo = JSON.stringify(memoData);
+	alert("ひとことメモを保存しました");
+	location.href = "memo-list.html";
+}
+// -->
+</script>
+</body>
+</html>

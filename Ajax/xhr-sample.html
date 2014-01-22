@@ -1,0 +1,36 @@
+<html>
+<head id="header">
+	<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=yes" />
+	<title>Ajaxサンプル</title>
+	<script><!--
+	function $(id) {return document.getElementById(id);}
+
+	//Ajax呼び出し
+	function requestAjax() {
+		//XMLHttpRequestオブジェクトの作成
+		var req = new XMLHttpRequest();
+		//openメソッドでURLを指定
+		req.open('GET','message.txt');
+		//onreadstatechangeイベントのハンドラを設定
+		req.onreadystatechange = function() {
+			//受信完了時には
+			if (req.readyState == 4) {
+				//取得した文字列を出力
+				$('output').innerHTML = req.responseText;
+				console.log(req.getAllResponseHeaders());
+			}
+		}
+
+		//リクエストを送信
+		req.send(null);
+	}
+
+	//-->
+	</script>
+</head>
+<body>
+	<h1>Ajaxサンプル</h1>
+	<div id="output"></div>
+	<button onclick="requestAjax();">Ajax実行</button>
+</body>
+</html>
